@@ -1,5 +1,6 @@
 package com.github.svettwer.citruscdc.contracts;
 
+import com.consol.citrus.dsl.builder.BuilderSupport;
 import com.consol.citrus.dsl.builder.HttpActionBuilder;
 import com.consol.citrus.dsl.builder.HttpClientActionBuilder;
 import com.consol.citrus.dsl.builder.HttpClientRequestActionBuilder;
@@ -9,28 +10,30 @@ import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.message.MessageType;
 import com.github.svettwer.citruscdc.contracts.utils.CsvReader;
 import com.github.svettwer.citruscdc.contracts.utils.QueryParameter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpMethod;
 
 import java.util.List;
 
-public class ContractBehavior  extends AbstractTestBehavior {
+public class ContractBehavior extends AbstractTestBehavior {
 
-    private TestRunner testRunner;
     private HttpClient httpClient;
+    private TestRunner testRunner;
     private HttpMethod httpMethod;
     private String endpoint;
     private Resource queryParameter;
     private Resource requestPayload;
     private Resource responsePayload;
+    private CsvReader csvReader = new CsvReader();
 
-    public ContractBehavior(final TestRunner testRunner,
-                            final HttpClient httpClient,
-                            final HttpMethod httpMethod,
-                            final String endpoint,
-                            final Resource queryParameter,
-                            final Resource requestPayload,
-                            final Resource responsePayload) {
+    ContractBehavior(final TestRunner testRunner,
+                     final HttpClient httpClient,
+                     final HttpMethod httpMethod,
+                     final String endpoint,
+                     final Resource queryParameter,
+                     final Resource requestPayload,
+                     final Resource responsePayload) {
         this.testRunner = testRunner;
         this.httpClient = httpClient;
         this.httpMethod = httpMethod;
@@ -39,10 +42,6 @@ public class ContractBehavior  extends AbstractTestBehavior {
         this.requestPayload = requestPayload;
         this.responsePayload = responsePayload;
     }
-
-
-
-    private CsvReader csvReader = new CsvReader();
 
     @Override
     public void apply() {
@@ -65,11 +64,11 @@ public class ContractBehavior  extends AbstractTestBehavior {
                         .client(httpClient)
                         .send();
 
-        final HttpClientRequestActionBuilder httpAction = configureMethod(client);
-        setQueryParameter(httpAction);
-        setResponsePayload(httpAction);
+        final HttpClientRequestActionBuilder httpActionBuilder = configureMethod(client);
+        setQueryParameter(httpActionBuilder);
+        setRequestPayload(httpActionBuilder);
 
-        testRunner.http(http -> httpAction.build());
+        testRunner.run(httpActionBuilder.build());
     }
 
     private HttpClientRequestActionBuilder configureMethod(
@@ -95,7 +94,7 @@ public class ContractBehavior  extends AbstractTestBehavior {
         return client.get(endpoint);
     }
 
-    private void setQueryParameter(final HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
+    private void setQueryParameter(HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
         if(queryParameter != null){
             final List<QueryParameter> queryParameters = csvReader.loadObjectList(QueryParameter.class, queryParameter);
             for (final QueryParameter parameter : queryParameters){
@@ -104,7 +103,7 @@ public class ContractBehavior  extends AbstractTestBehavior {
         }
     }
 
-    private void setResponsePayload(final HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
+    private void setRequestPayload(final HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
         if(requestPayload != null){
             httpClientRequestActionBuilder
                     .payload(requestPayload)

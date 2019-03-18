@@ -5,8 +5,11 @@ public class QueryParameter {
     private String key;
     private String value;
 
-    public QueryParameter(final String key, final String value) {
+    public void setKey(final String key) {
         this.key = key;
+    }
+
+    public void setValue(final String value) {
         this.value = value;
     }
 

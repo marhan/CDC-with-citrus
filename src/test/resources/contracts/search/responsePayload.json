@@ -1,0 +1,14 @@
+[
+  {
+    "hotelId": 42,
+    "name": "Hotel Gloria de Sant Jaume",
+    "stars": 5,
+    "arrivalAirport": "PMI"
+  },
+  {
+    "hotelId": 84,
+    "name": "Es Princep",
+    "stars": 5,
+    "arrivalAirport": "PMI"
+  }
+]
