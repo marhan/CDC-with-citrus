@@ -1,0 +1,14 @@
+{
+  "correlationId": "${correlationId}",
+  "hotelId": 31415,
+  "rooms": [{
+    "roomId": 14,
+    "roomName": "Double bed deluxe",
+    "availability": 12
+  },
+    {
+      "roomId": "15",
+      "roomName": "King size bed deluxe",
+      "availability": 5
+    }]
+}
