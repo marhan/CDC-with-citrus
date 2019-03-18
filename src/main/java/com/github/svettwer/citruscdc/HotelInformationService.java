@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CitruscdcApplication {
+public class HotelInformationService {
 
     public static void main(String[] args) {
-        SpringApplication.run(CitruscdcApplication.class, args);
+        SpringApplication.run(HotelInformationService.class, args);
     }
 
 }
