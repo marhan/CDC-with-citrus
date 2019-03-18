@@ -27,8 +27,8 @@ class GetAvailabilityContractIT {
                 new ContractBehaviorBuilder(runner)
                         .withClient(httpClient)
                         .withEndpoint("/availability")
-                        .withHttpMethod(HttpMethod.POST)
-                        .withRequestPayload(new ClassPathResource("contracts/availability/requestPayload.json"))
+                        .withHttpMethod(HttpMethod.GET)
+                        .withQueryParameter(new ClassPathResource("contracts/availability/queryParameter.csv"))
                         .withResponsePayload(new ClassPathResource("contracts/availability/responsePayload.json"))
                         .build());
     }

@@ -7,7 +7,7 @@
     "availability": 12
   },
     {
-      "roomId": "15",
+      "roomId": 15,
       "roomName": "King size bed deluxe",
       "availability": 5
     }]
