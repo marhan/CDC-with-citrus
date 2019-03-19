@@ -15,23 +15,41 @@ availabilities, etc. Based on this hotel information we have several consumers i
 One is the availability consumer requesting availability information for a specified hotel. The other consumer is
 searching for hotels by specified criteria. Both consumer expect different responses for their requests.
 
-|availability response                     | search response                           |
-|------------------------------------------|-------------------------------------------|
-|`json`                                    |`json`                                     |
-|`{`                                       |`[`                                        |
-|   `"correlationId": "${correlationId}",` |  `{`                                      |
-|   `"hotelId": 31415,`                    |    `"hotelId": 42,`                       |
-|   `"rooms": [{`                          |    `"name": "Hotel Gloria de Sant Jaume",`|
-|     `"roomId": 14,`                      |    `"stars": 5,`                          |
-|     `"roomName": "Double bed deluxe",`   |    `"arrivalAirport": "PMI"`              |
-|     `"availability": 12`                 |  `},`                                     |
-|   `},`                                   |  `{`                                      |
-|   `{`                                    |    `"hotelId": 84,`                       |
-|     `"roomId": 15,`                      |    `"name": "Es Princep",`                |
-|     `"roomName": "King size bed deluxe",`|    `"stars": 5,`                          |
-|     `"availability": 5`                  |    `"arrivalAirport": "PMI"`              |
-|   `}]`                                   |  `}`                                      |
-|`}`                                       |`]`                                        |
+**availability response**
+```json
+{
+  "correlationId": "${correlationId}",
+  "hotelId": 31415,
+  "rooms": [{
+    "roomId": 14,
+    "roomName": "Double bed deluxe",
+    "availability": 12
+  },
+    {
+      "roomId": 15,
+      "roomName": "King size bed deluxe",
+      "availability": 5
+    }]
+}
+```
+
+**search response**
+```json
+[
+  {
+    "hotelId": 42,
+    "name": "Hotel Gloria de Sant Jaume",
+    "stars": 5,
+    "arrivalAirport": "PMI"
+  },
+  {
+    "hotelId": 84,
+    "name": "Es Princep",
+    "stars": 5,
+    "arrivalAirport": "PMI"
+  }
+]
+```
 
 # CDC + Citrus 
 Core of the cdc framework is the `ContractBehavior`. A Behavior is a repeatable, configurable set of test actions
