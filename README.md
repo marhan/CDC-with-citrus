@@ -88,3 +88,6 @@ setup. If they agree, the provider uses the contract integration test as accepta
 # What's next?
 Based on this concepts, one could setup a more sophisticated version of the framework to handle more complex contracts
 depending on the requirements of the project.
+
+# Executing the tests
+`mvn clean verify`
