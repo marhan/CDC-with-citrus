@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Room {
 
-    private Long roomId;
-    private String roomName;
-    private int availability;
-    private int beds;
+    private final Long roomId;
+    private final String roomName;
+    private final int availability;
+    private final int beds;
 
     public Room(final Long roomId, final String roomName, final int availability, final int beds) {
         this.roomId = roomId;

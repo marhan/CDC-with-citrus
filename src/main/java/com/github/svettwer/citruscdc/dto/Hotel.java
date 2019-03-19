@@ -6,11 +6,11 @@ import java.util.Objects;
 
 public class Hotel {
 
-    private Long hotelId;
-    private String hotelName;
-    private int stars;
-    private String arrivalAirport;
-    private List<Room> rooms;
+    private final Long hotelId;
+    private final String hotelName;
+    private final int stars;
+    private final String arrivalAirport;
+    private final List<Room> rooms;
 
     public Hotel(final Long hotelId, final String hotelName, final int stars, final String arrivalAirport) {
         this.hotelId = hotelId;

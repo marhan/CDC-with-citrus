@@ -1,6 +1,5 @@
 package com.github.svettwer.citruscdc.consumer.availability.controller;
 
-import com.github.svettwer.citruscdc.HotelInformationService;
 import com.github.svettwer.citruscdc.consumer.availability.dto.HotelAvailability;
 import com.github.svettwer.citruscdc.dto.Hotel;
 import com.github.svettwer.citruscdc.service.InformationService;

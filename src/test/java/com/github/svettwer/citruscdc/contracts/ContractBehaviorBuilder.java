@@ -7,7 +7,7 @@ import org.springframework.http.HttpMethod;
 
 public class ContractBehaviorBuilder {
 
-    private TestRunner testRunner;
+    private final TestRunner testRunner;
     private HttpClient httpClient;
     private HttpMethod httpMethod;
     private String endpoint;

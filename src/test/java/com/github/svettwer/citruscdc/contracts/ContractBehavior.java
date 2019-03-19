@@ -1,6 +1,5 @@
 package com.github.svettwer.citruscdc.contracts;
 
-import com.consol.citrus.dsl.builder.BuilderSupport;
 import com.consol.citrus.dsl.builder.HttpActionBuilder;
 import com.consol.citrus.dsl.builder.HttpClientActionBuilder;
 import com.consol.citrus.dsl.builder.HttpClientRequestActionBuilder;
@@ -10,7 +9,6 @@ import com.consol.citrus.http.client.HttpClient;
 import com.consol.citrus.message.MessageType;
 import com.github.svettwer.citruscdc.contracts.utils.CsvReader;
 import com.github.svettwer.citruscdc.contracts.utils.QueryParameter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpMethod;
 
@@ -18,14 +16,14 @@ import java.util.List;
 
 public class ContractBehavior extends AbstractTestBehavior {
 
-    private HttpClient httpClient;
-    private TestRunner testRunner;
-    private HttpMethod httpMethod;
-    private String endpoint;
-    private Resource queryParameter;
-    private Resource requestPayload;
-    private Resource responsePayload;
-    private CsvReader csvReader = new CsvReader();
+    private final HttpClient httpClient;
+    private final TestRunner testRunner;
+    private final HttpMethod httpMethod;
+    private final String endpoint;
+    private final Resource queryParameter;
+    private final Resource requestPayload;
+    private final Resource responsePayload;
+    private final CsvReader csvReader = new CsvReader();
 
     ContractBehavior(final TestRunner testRunner,
                      final HttpClient httpClient,
@@ -94,7 +92,7 @@ public class ContractBehavior extends AbstractTestBehavior {
         return client.get(endpoint);
     }
 
-    private void setQueryParameter(HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
+    private void setQueryParameter(final HttpClientRequestActionBuilder httpClientRequestActionBuilder) {
         if(queryParameter != null){
             final List<QueryParameter> queryParameters = csvReader.loadObjectList(QueryParameter.class, queryParameter);
             for (final QueryParameter parameter : queryParameters){

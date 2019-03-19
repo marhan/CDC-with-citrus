@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CsvReader {
 
-    private static Logger logger = LogManager.getLogger(CsvReader.class);
+    private static final Logger logger = LogManager.getLogger(CsvReader.class);
 
     public <T> List<T> loadObjectList(final Class<T> type, final Resource dataResource) {
         try {

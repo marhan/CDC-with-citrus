@@ -4,10 +4,10 @@ import java.util.Objects;
 
 public class Hotel {
 
-    private Long hotelId;
-    private String name;
-    private int stars;
-    private String arrivalAirport;
+    private final Long hotelId;
+    private final String name;
+    private final int stars;
+    private final String arrivalAirport;
 
     public Hotel(final com.github.svettwer.citruscdc.dto.Hotel hotel) {
         this.hotelId = hotel.getHotelId();

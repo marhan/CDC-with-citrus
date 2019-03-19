@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class HotelAvailability {
 
-    private UUID correlationId;
-    private Long hotelId;
-    private List<Room> rooms = new LinkedList<>();
+    private final UUID correlationId;
+    private final Long hotelId;
+    private final List<Room> rooms = new LinkedList<>();
 
     public HotelAvailability(final UUID correlationId, final Hotel requestedHotel) {
         this.correlationId = correlationId;

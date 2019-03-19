@@ -2,13 +2,13 @@ package com.github.svettwer.citruscdc.consumer.availability.dto;
 
 import java.util.Objects;
 
-public class Room {
+class Room {
 
-    private Long roomId;
-    private String roomName;
-    private int availability;
+    private final Long roomId;
+    private final String roomName;
+    private final int availability;
 
-    public Room(final Long roomId, final String roomName, final int availability) {
+    Room(final Long roomId, final String roomName, final int availability) {
         this.roomId = roomId;
         this.roomName = roomName;
         this.availability = availability;

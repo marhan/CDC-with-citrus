@@ -11,7 +11,7 @@ import java.util.Objects;
 @Service
 public class InformationService {
 
-    private List<Hotel> hotels = new LinkedList<>();
+    private final List<Hotel> hotels = new LinkedList<>();
 
     public InformationService(){
         hotels.add(new Hotel(42L, "Hotel Gloria de Sant Jaume", 5, "PMI"));
